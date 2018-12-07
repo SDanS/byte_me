@@ -1,0 +1,6 @@
+# byte_games - My first Golang adventure.
+Playing with binary files.
+* Included are both a script for creation and a script for reading the generated log.
+* This was the first time I worked with golang, but it was seemingly the most accessible tool for the job.
+* This was a lot of fun. 
+* I haven't even thought about binary since 11th grade in '91. So bonus fun.
