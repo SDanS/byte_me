@@ -4,3 +4,13 @@ Playing with binary files.
 * This was the first time I worked with golang, but it was seemingly the most accessible tool for the job.
 * This was a lot of fun. 
 * I haven't even thought about binary since 11th grade in '91. So bonus fun.
+
+# Building.
+* Ensure that go is installed and properly configured. 
+* Unzip files into your go project directory.
+* From inside the directory, run:
+>   go build .\readlog\readlog.go
+>   go build .\createlog\createlog.go
+* Run as demonstrated above or using help option.
+
+The included README.md has further information on the scripts.
