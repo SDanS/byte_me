@@ -3,7 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/binary"
-	"fmt"
+	"flag"
 	"log"
 	"math/rand"
 	"os"
@@ -26,18 +26,25 @@ type RecordShort struct {
 var buf bytes.Buffer
 
 func main() {
+	countPtr := flag.Int("count", 67, "Number of records to generate.")
+	versionPtr := flag.Int("version", 206, "Version to write to header.")
+	var directory string
+	flag.StringVar(&directory, "directory", "", "Location to place file")
+	flag.Parse()
 	magicString := "MPS7"
 	magicBytes := []byte(magicString)
+	bufHeader(*countPtr, *versionPtr, magicBytes)
 	rand.Seed(time.Now().UnixNano())
-	binary.Write(&buf, binary.BigEndian, magicBytes)
-	binary.Write(&buf, binary.BigEndian, uint8(255))
-	binary.Write(&buf, binary.BigEndian, uint32(67))
-	fmt.Println(buf.Bytes())
-	for i := 0; i < int(67); i++ {
+	for i := 0; i < int(*countPtr); i++ {
 		generateRecord()
 	}
-	fmt.Println(buf.Bytes())
-	writeFile()
+	writeFile(directory)
+}
+
+func bufHeader(c int, v int, m []byte) {
+	binary.Write(&buf, binary.BigEndian, m)
+	binary.Write(&buf, binary.BigEndian, uint8(v))
+	binary.Write(&buf, binary.BigEndian, uint32(c))
 }
 
 func generateRecord() {
@@ -64,8 +71,8 @@ func randomFloat64(min, max float64) float64 {
 	return min + rand.Float64()*(max-min)
 }
 
-func writeFile() {
-	file, err0 := os.Create("txnlog.dat")
+func writeFile(d string) {
+	file, err0 := os.Create(d + "txnlog.dat")
 	defer file.Close()
 	if err0 != nil {
 		log.Fatal(err0)
