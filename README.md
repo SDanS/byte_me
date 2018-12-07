@@ -4,6 +4,7 @@ Playing with binary files.
 
 ## createlog
 * Generates a transaction log of *count* length in *directory* with *version*.
+
         > ..\createlog\createlog.exe -h
         Usage of D:\VisualStudioProjects\GoProjects\byte_games\createlog\createlog.exe:
         -count int
@@ -24,19 +25,20 @@ Playing with binary files.
   * totall: totals all monetary transactions.
   * totcredit: totals all credit transactions.
   * totdebit: totals all debit transactions.
-            > .\readlog.exe -h
-            Usage of D:\VisualStudioProjects\GoProjects\byte_games\readlog\readlog.exe:
-                readlog.exe [options] [/path/to/file or C:\path\to\file]
-                  -autopayend
-                    Total number of autopays ended. (default true)
-                  -autopaystart
-                    Total number of autopays started. (default true)
-                  -totall
-                    Total all monetary transactions.
-                  -totcredit
-                    Total all credit transactions. (default true)
-                  -totdebit
-                    Total of all debit transactions. (default true)
+
+        > .\readlog.exe -h
+        Usage of D:\VisualStudioProjects\GoProjects\byte_games\readlog\readlog.exe:
+            readlog.exe [options] [/path/to/file or C:\path\to\file]
+              -autopayend
+                Total number of autopays ended. (default true)
+              -autopaystart
+                Total number of autopays started. (default true)
+              -totall
+                Total all monetary transactions.
+              -totcredit
+                Total all credit transactions. (default true)
+              -totdebit
+                Total of all debit transactions. (default true)
 ### TODO for readlog:
 - [x] Remove debug and print statements.
 
