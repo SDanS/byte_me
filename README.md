@@ -47,6 +47,6 @@ Playing with binary files.
 * Ensure that go is installed and properly configured. 
 * Unzip files into your go project directory.
 * From inside the directory, run:
-   go build .\readlog\readlog.go
-   go build .\createlog\createlog.go
+        go build .\readlog\readlog.go
+        go build .\createlog\createlog.go
 * Run as demonstrated above or using help option.
