@@ -26,18 +26,19 @@ Playing with binary files.
   * totcredit: totals all credit transactions.
   * totdebit: totals all debit transactions.
 
-        > .\readlog.exe -h
-        Usage of D:\VisualStudioProjects\GoProjects\byte_games\readlog\readlog.exe:
-            readlog.exe [options] [/path/to/file or C:\path\to\file]
-              -autopayend
+            > .\readlog\readlog.exe -h
+            Usage of D:\VisualStudioProjects\GoProjects\byte_games\readlog\readlog.exe:
+            -autopayend
                 Total number of autopays ended. (default true)
-              -autopaystart
+            -autopaystart
                 Total number of autopays started. (default true)
-              -totall
+            -file string
+                File to read. (default "txnlog.dat")
+            -totall
                 Total all monetary transactions.
-              -totcredit
+            -totcredit
                 Total all credit transactions. (default true)
-              -totdebit
+            -totdebit
                 Total of all debit transactions. (default true)
 ### TODO for readlog:
 - [x] Remove debug and print statements.

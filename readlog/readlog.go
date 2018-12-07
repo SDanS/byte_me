@@ -41,14 +41,14 @@ func main() {
 	totAPtr := flag.Bool("totall", false, "Total all monetary transactions.")
 	apStartPtr := flag.Bool("autopaystart", true, "Total number of autopays started.")
 	apEndPtr := flag.Bool("autopayend", true, "Total number of autopays ended.")
+	var file string
+	flag.StringVar(&file, "file", "txnlog.dat", "File to read.")
 	flag.Usage = func() {
 		fmt.Printf("Usage of %s:\n", os.Args[0])
-		fmt.Printf("    readlog.exe [options] [/path/to/file or C:\\path\\to\\file]\n")
 		flag.PrintDefaults()
 	}
 	flag.Parse()
-	directory = flag.Args()
-	createData(directory)
+	createData(file)
 	if *totCPtr {
 		totCredit()
 		fmt.Println("Total credit transactions: " + strconv.FormatFloat(totCreditAgg, 'f', -1, 64))
@@ -106,8 +106,8 @@ func autoPayEnd() {
 	}
 }
 
-func createData(d []string) {
-	file, err := os.Open(d[0])
+func createData(f string) {
+	file, err := os.Open(f)
 	defer file.Close()
 	if err != nil {
 		log.Fatal(err)
@@ -120,9 +120,7 @@ func createData(d []string) {
 }
 
 func makeRecordsStructs(c uint32, f os.File) {
-	fmt.Println(c)
 	for i := 1; i <= int(c); i++ {
-		fmt.Println(i)
 		enum := readBytes(f, 1)
 		if (enum[0] == 0) || (enum[0] == 1) {
 			recordLong := new(ReadRecordLong)
